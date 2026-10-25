@@ -1,0 +1,16 @@
+let p = Var "p";;
+let t = by_assumption p;;
+let t = imp_i p t;;
+
+let p = Var "p";;
+let q = Var "q";;
+let t = by_assumption p;;
+let t = imp_i q t;;
+let t = imp_i p t;;
+
+
+
+let p = Var "p";;
+let t = by_assumption Bot;;
+let t = bot_e p t;;
+let t = imp_i Bot t;;
