@@ -33,8 +33,8 @@ module RS : sig include RandomMonad val run : int -> 'a t -> 'a
 end = struct
     type 'a t = int -> 'a * int
     let return x = fun s -> (x, s)
-    let bind m f = fun s -> let x = m n in (f x n, s)
-    let run n = fun m ->
+    let bind m f = fun s -> let (x, n) = m s in f x n
+    let run n m = fst (m n)
 end
 
 module S = Shuffle(RS)
